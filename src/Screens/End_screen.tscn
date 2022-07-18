@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/Assets/Gugi-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/UserInterface/Change_screen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UserInterface/Exit.gd" type="Script" id=3]
+[ext_resource path="res://src/Screens/High_score.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 1 )
+
+[node name="End_screen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.521569, 0.976471, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="High_score" type="Label" parent="."]
+margin_right = 288.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "High Score: 0"
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -144.0
+margin_top = 150.0
+margin_right = 144.0
+margin_bottom = 231.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0.596078, 0.921569, 1 )
+text = "THE END"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -144.0
+margin_top = 250.0
+margin_right = 144.0
+margin_bottom = 328.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Retry" parent="Menu" instance=ExtResource( 2 )]
+margin_right = 288.0
+text = "RETRY"
+next_scene_path = "res://src/Screens/World.tscn"
+
+[node name="Exit" type="Button" parent="Menu"]
+margin_top = 41.0
+margin_right = 288.0
+margin_bottom = 78.0
+focus_mode = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0.647059, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0.647059, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.647059, 1, 1 )
+enabled_focus_mode = 0
+text = "EXIT"
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Menu/Exit" to="Menu/Exit" method="_on_pressed"]
